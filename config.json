@@ -1,0 +1,9 @@
+{
+    "template": "template/index.mst",
+    "article": "README.md",
+    "styles": [
+        "css/styles.css",
+        "node_modules/highlight.js/styles/atom-one-light.css"
+    ],
+    "dist": "book.pdf"
+}
