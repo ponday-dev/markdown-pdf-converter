@@ -52,3 +52,10 @@ p:before {
     content: '   ';
     white-space: pre-wrap;
 }
+pre.hljs {
+    margin: 0 3mm;
+    padding: 5mm;
+}
+code {
+    background-color: #fafafa;
+}
