@@ -8,13 +8,6 @@ const mime = require('mime-types');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
-const imageServer = http.createServer((req, res) => {
-    mimetype = mime.lookup(path.extname(req.url));
-    image = fs.readFileSync(`./images/${path.basename(req.url)}`);
-    res.writeHead(200, {'Content-Type': mimetype});
-    res.end(image);
-});
-
 const markdown = new markdownIt({
     highlight: function(str, lang) {
         if (lang && hljs.getLanguage(lang)) {
@@ -23,6 +16,15 @@ const markdown = new markdownIt({
         return '';
     }
 });
+
+function createImageServer(imageDir) {
+    return http.createServer((req, res) => {
+        mimetype = mime.lookup(path.extname(req.url));
+        image = fs.readFileSync(`${imageDir}/${path.basename(req.url)}`);
+        res.writeHead(200, {'Content-Type': mimetype});
+        res.end(image);
+    });
+}
 
 function readStyles(cssList) {
     return cssList
@@ -75,6 +77,7 @@ async function printToPDF(data, options) {
 
 (async () => {
     const config = JSON.parse(fs.readFileSync(process.argv[2], { encoding: 'utf-8' }));
+    
     const data = fs.readFileSync(config.article, { encoding: 'utf-8' });
 
     const body = markdown.render(data);
@@ -83,6 +86,7 @@ async function printToPDF(data, options) {
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
     const html = convertImageSrc(mustache.render(template, { body, styles }));
 
+    const imageServer = createImageServer(config.image_dir);
     imageServer.listen(3000);
 
     await printToPDF(html, {
