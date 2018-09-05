@@ -57,5 +57,31 @@ pre.hljs {
     padding: 5mm;
 }
 code {
-    background-color: #fafafa;
+    background-color: #f0f0f0;
 }
+blockquote {
+    background-color: #f0f0f0;
+    position: relative;
+    padding: 3mm;
+}
+blockquote * {
+    font-size: 0.8rem;
+    color: #565656;
+}
+blockquote :first-child {
+    margin-top: 0;
+}
+blockquote :last-child {
+    margin-bottom: 0;
+}
+blockquote:before {
+    content: '';
+    display: inline-block;
+    width: 1mm;
+    height: 100%;
+    background-color: #808080;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
