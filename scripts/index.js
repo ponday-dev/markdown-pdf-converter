@@ -17,7 +17,7 @@ const markdown = new markdownIt({
     }
 });
 
-function createImageServer(imageDir) {
+function createServer(imageDir) {
     return http.createServer((req, res) => {
         mimetype = mime.lookup(path.extname(req.url));
         image = fs.readFileSync(`${imageDir}/${path.basename(req.url)}`);
@@ -32,11 +32,11 @@ function readStyles(cssList) {
         .join('\n');
 }
 
-function convertImageSrc(html) {
+function convertImageSrc(html, port) {
     const doc = new JSDOM(html).window.document;
     for (const img of doc.getElementsByTagName('img')) {
         img.parentElement.classList.add('img-container')
-        img.src = `http://localhost:3000/${img.src}`;
+        img.src = `http://localhost:${port}/${img.src}`;
 
         if (img.title) {
             img.parentElement.dataset.title = img.title;
@@ -77,6 +77,7 @@ async function printToPDF(data, options) {
 
 (async () => {
     const config = JSON.parse(fs.readFileSync(process.argv[2], { encoding: 'utf-8' }));
+    const port = config.port || 3000;
     
     const data = fs.readFileSync(config.article, { encoding: 'utf-8' });
 
@@ -84,10 +85,10 @@ async function printToPDF(data, options) {
     const styles = readStyles(config.styles);
 
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
-    const html = convertImageSrc(mustache.render(template, { body, styles }));
+    const html = convertImageSrc(mustache.render(template, { body, styles }), port);
 
-    const imageServer = createImageServer(config.image_dir);
-    imageServer.listen(3000);
+    const imageServer = createServer(config.image_dir);
+    imageServer.listen(port);
 
     await printToPDF(html, {
         path: config.dist,
