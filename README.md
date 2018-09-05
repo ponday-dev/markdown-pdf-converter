@@ -22,6 +22,30 @@ npm install
 
 `npm run start`でPDF変換開始。
 
+## 拡張機能
+
+### 画像のサイズ指定
+
+画像のサイズを以下のフォーマットで指定できます。
+
+```md
+![sample.png $size=200x300](...)
+![sample.png $size=width:200](...)
+![sample.png $size=200](...)
+```
+
++ `$size=(width)x(height)`でサイズ指定
++ `$size=('width' or 'height'):(value)`でどちらか一方のみサイズ指定
++ `$size=(width)`で幅指定
+
+### 画像のキャプション設定
+
+画像にtitle属性を付与するとキャプションが表示されます。
+
+```md
+![sample.png](images/sample.png "sample.png")
+```
+
 ## 今後対応したいところ
 
 - 表紙（タイトルとか作者名埋め込めるようにしたい）
@@ -33,4 +57,3 @@ npm install
 
 - `github.css`を適用するとコードをコピー＆ペーストしたときに改行が崩れる。
 - cssのセレクタにワイルドカードを使うと正しく範囲選択ができない。
-

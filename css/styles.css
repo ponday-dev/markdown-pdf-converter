@@ -48,7 +48,7 @@ p {
     font-size: 18px;
     padding: 0 3mm;
 }
-p:before {
+p:not(.img-container)::before {
     content: '   ';
     white-space: pre-wrap;
 }
@@ -84,4 +84,14 @@ blockquote:before {
     top: 0;
     left: 0;
 }
-
+img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.img-container::after {
+    content: attr(data-title);
+    display:block;
+	width:100%;
+	text-align:center;
+}
