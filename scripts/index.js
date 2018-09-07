@@ -32,6 +32,20 @@ function readStyles(cssList) {
         .join('\n');
 }
 
+// TODO: 実装が汚いから直したい
+function convertExtendLiteral(html) {
+    const doc = new JSDOM(html).window.document;
+    for (const p of doc.getElementsByTagName('p')) {
+        switch(p.innerHTML) {
+            case ';;;':
+                p.innerHTML = '';
+                p.style.cssText = 'page-break-after: always;';
+                break;
+        }
+    }
+    return doc.documentElement.outerHTML;
+}
+
 function convertImageSrc(html, port) {
     const doc = new JSDOM(html).window.document;
     for (const img of doc.getElementsByTagName('img')) {
@@ -85,7 +99,9 @@ async function printToPDF(data, options) {
     const styles = readStyles(config.styles);
 
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
-    const html = convertImageSrc(mustache.render(template, { body, styles }), port);
+    const html = convertExtendLiteral(convertImageSrc(mustache.render(template, { body, styles }), port));
+
+    console.log(html);
 
     const imageServer = createServer(config.image_dir);
     imageServer.listen(port);
