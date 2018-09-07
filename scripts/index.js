@@ -101,8 +101,6 @@ async function printToPDF(data, options) {
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
     const html = convertExtendLiteral(convertImageSrc(mustache.render(template, { body, styles }), port));
 
-    console.log(html);
-
     const imageServer = createServer(config.image_dir);
     imageServer.listen(port);
 
