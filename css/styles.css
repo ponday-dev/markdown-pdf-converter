@@ -95,3 +95,7 @@ img {
 	width:100%;
 	text-align:center;
 }
+hr {
+    width: 50mm;
+    margin: 10mm auto;
+}
