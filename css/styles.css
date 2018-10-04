@@ -7,7 +7,7 @@ h1, h2, h3 {
     position: relative;
 }
 h1 {
-    font-size: 54px;
+    font-size: 48px;
     margin: 35mm 0 50mm 5mm;
     page-break-before: always;
     /* page-break-after: always; */
@@ -79,7 +79,7 @@ blockquote:before {
     display: inline-block;
     width: 1mm;
     height: 100%;
-    background-color: #808080;
+    background-color: #f0f0f0;
     position: absolute;
     top: 0;
     left: 0;
