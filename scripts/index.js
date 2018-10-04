@@ -108,7 +108,7 @@ function createTableContents(md) {
         }
     }, '## 目次');
 
-    return `${tableContents}\n;;;`;
+    return `${tableContents}\n\n;;;`;
 }
 
 (async () => {
