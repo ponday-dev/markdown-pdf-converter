@@ -89,13 +89,37 @@ async function printToPDF(data, options) {
     await browser.close();
 }
 
+function createTableContents(md) {
+    const contents = md.match(/#{1,3}\s.+/g)
+
+    const concatToken = (prefix, acc, token, breaks=1) => {
+        const br = '\n'.repeat(breaks);
+        return `${acc}${br}${prefix} ${token.slice(token.indexOf(' ') + 1)}`;
+    }
+
+    const tableContents = contents.reduce((acc, token) => {
+        switch(token.indexOf(' ')) {
+            case 1:
+                return concatToken('####', acc, token, 2);
+            case 2:
+                return concatToken('-', acc, token);
+            case 3:
+                return concatToken('\t-', acc, token)
+        }
+    }, '## 目次');
+
+    return `${tableContents}\n;;;`;
+}
+
 (async () => {
     const config = JSON.parse(fs.readFileSync(process.argv[2], { encoding: 'utf-8' }));
     const port = config.port || 3000;
     
     const data = fs.readFileSync(config.article, { encoding: 'utf-8' });
 
-    const body = markdown.render(data);
+    const md = `${createTableContents(data) }\n${data}`;
+
+    const body = markdown.render(md);
     const styles = readStyles(config.styles);
 
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
