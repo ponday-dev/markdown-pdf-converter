@@ -90,14 +90,24 @@ async function printToPDF(data, options) {
 }
 
 function createTableContents(md) {
-    const contents = md.match(/#{1,3}\s.+/g)
+    const contents = md.match(/([#]{1,3}\s.+|[`]{3}.*)/g)
 
     const concatToken = (prefix, acc, token, breaks=1) => {
         const br = '\n'.repeat(breaks);
         return `${acc}${br}${prefix} ${token.slice(token.indexOf(' ') + 1)}`;
     }
 
+    let codeBlock = false;
     const tableContents = contents.reduce((acc, token) => {
+        console.log(token);
+        console.log(codeBlock);
+        if (token.startsWith("```")) {
+            codeBlock = !codeBlock;
+            return acc;
+        }
+        if (codeBlock) {
+            return acc;
+        }
         switch(token.indexOf(' ')) {
             case 1:
                 return concatToken('####', acc, token, 2);
