@@ -134,9 +134,9 @@ function createTableContents(md) {
         printBackground: true,
         landscape: false,
         margin: {
-            top: '5mm',
+            top: '10mm',
             right: '5mm',
-            bottom: '5mm',
+            bottom: '10mm',
             left: '5mm'
         }
     });
