@@ -99,8 +99,6 @@ function createTableContents(md) {
 
     let codeBlock = false;
     const tableContents = contents.reduce((acc, token) => {
-        console.log(token);
-        console.log(codeBlock);
         if (token.startsWith("```")) {
             codeBlock = !codeBlock;
             return acc;
