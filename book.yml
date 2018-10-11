@@ -8,9 +8,9 @@ default:
     format: "A4"
     print_background: true
     landspace: false
-    display_header_footer: true
-    header_template: ""
-    footer_template: ""
+    display_header_footer: false
+    header_template: true
+    footer_template: true
     margin:
       top: "10mm"
       right: "5mm"
