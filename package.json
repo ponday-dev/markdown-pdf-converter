@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/index.js config.json"
+    "start": "node scripts/index.js -c config.yml"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,10 @@
     "mustache": "^2.3.2",
     "puppeteer": "^1.7.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "argparse": "^1.0.10",
+    "js-yaml": "^3.12.0"
+  },
   "keywords": [],
   "description": ""
 }
