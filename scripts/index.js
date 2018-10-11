@@ -1,5 +1,5 @@
 const fs = require('fs');
-const markdownIt = require('markdown-it');
+const MarkdownIt = require('markdown-it');
 const hljs = require('highlight.js');
 const puppeteer = require('puppeteer');
 const mustache = require('mustache');
@@ -16,9 +16,17 @@ function highlight(str, lang) {
     return '';
 }
 
-const markdown = new markdownIt({ highlight })
-    .use(require('markdown-it-imsize'))
-    .use(require('./plugins/break-page'));
+function createMarkdownIt(config) {
+    let options = {};
+
+    if (config.highlight) {
+        options.highlight = highlight;
+    }
+
+    return new MarkdownIt(options)
+        .use(require('markdown-it-imsize'))
+        .use(require('./plugins/break-page'));
+}
 
 function createServer(imageDir) {
     return http.createServer((req, res) => {
@@ -90,6 +98,7 @@ function createTableContents(md) {
 
 (async () => {
     const config = JSON.parse(fs.readFileSync(process.argv[2], { encoding: 'utf-8' }));
+    const markdown = createMarkdownIt(config);
     const port = config.port || 3000;
     
     const data = fs.readFileSync(config.article, { encoding: 'utf-8' });
