@@ -8,14 +8,16 @@ const mime = require('mime-types');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 
-const markdown = new markdownIt({
-    highlight: function(str, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-            return `<pre class="hljs"><code><div>${hljs.highlight(lang, str, true).value}</div></code></pre>`;
-        }
-        return '';
+
+function highlight(str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+        return `<pre class="hljs"><code><div>${hljs.highlight(lang, str, true).value}</div></code></pre>`;
     }
-});
+    return '';
+}
+
+const markdown = new markdownIt({ highlight })
+    .use(require('./plugins/break-page'));
 
 function createServer(imageDir) {
     return http.createServer((req, res) => {
@@ -30,20 +32,6 @@ function readStyles(cssList) {
     return cssList
         .map(css => fs.readFileSync(`${css}`, { encoding: 'utf-8' }))
         .join('\n');
-}
-
-// TODO: 実装が汚いから直したい
-function convertExtendLiteral(html) {
-    const doc = new JSDOM(html).window.document;
-    for (const p of doc.getElementsByTagName('p')) {
-        switch(p.innerHTML) {
-            case ';;;':
-                p.innerHTML = '';
-                p.style.cssText = 'page-break-after: always;';
-                break;
-        }
-    }
-    return doc.documentElement.outerHTML;
 }
 
 function convertImageSrc(html, port) {
@@ -131,7 +119,7 @@ function createTableContents(md) {
     const styles = readStyles(config.styles);
 
     const template = fs.readFileSync(config.template, { encoding: 'utf-8' });
-    const html = convertExtendLiteral(convertImageSrc(mustache.render(template, { body, styles }), port));
+    const html = convertImageSrc(mustache.render(template, { body, styles }), port);
 
     const imageServer = createServer(config.image_dir);
     imageServer.listen(port);
