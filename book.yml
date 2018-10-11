@@ -6,8 +6,11 @@ default:
   print_options:
     path: "dist/book.pdf"
     format: "A4"
-    printBackground: true
+    print_background: true
     landspace: false
+    display_header_footer: true
+    header_template: ""
+    footer_template: ""
     margin:
       top: "10mm"
       right: "5mm"
@@ -17,7 +20,9 @@ default:
     path: "templates"
     front: "front.pdf"
     back_of_front: "white.pdf"
+    header: "header.html"
     body: "body.mst"
+    footer: "footer.html"
     back_of_back: "white.pdf"
     back: "back.pdf"
   articles:

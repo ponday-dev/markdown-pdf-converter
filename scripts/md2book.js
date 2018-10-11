@@ -28,6 +28,33 @@ function convertImageSrc(html, port) {
     return doc.documentElement.outerHTML;
 }
 
+function convertPrintOptions({ print_options, templates }) {
+    const loadTemplate = (value, path) => {
+        if (value === true) {
+            return fs.readFileSync(path.join(templates.path, path), { encoding: 'utf-8' });
+        } else {
+            return value;
+        }
+    };
+    return Object.entries(print_options)
+        .map(([key, value]) => {
+            [hd, ...tl] = key.split('_');
+            const k = tl.reduce((acc, token) => acc + token[0].toUpperCase() + token.slice(1), hd);
+            return [k, value];
+        })
+        .map(([key, value]) => {
+            switch(key) {
+                case 'headerTemplate':
+                    return [key, loadTemplate(value, templates.header)];
+                case 'footerTemplate':
+                    return [key, loadTemplate(value, templates.footer)];
+                default:
+                    return [key, value];
+            }
+        })
+        .reduce((acc, [key, value]) => Object.assign(acc, { [key]: value }), {});
+}
+
 module.exports = async function md2book(configFilePath, configProfile, bookProfile) {
     const config = loadConfig(configFilePath, configProfile);
     
@@ -47,7 +74,7 @@ module.exports = async function md2book(configFilePath, configProfile, bookProfi
     const imageServer = createServer(config);
     imageServer.listen(config.port);
 
-    await printToPDF(html, bookConfig.print_options);
+    await printToPDF(html, convertPrintOptions(bookConfig));
 
     imageServer.close();
 }
