@@ -17,6 +17,7 @@ function highlight(str, lang) {
 }
 
 const markdown = new markdownIt({ highlight })
+    .use(require('markdown-it-imsize'))
     .use(require('./plugins/break-page'));
 
 function createServer(imageDir) {
@@ -42,26 +43,6 @@ function convertImageSrc(html, port) {
 
         if (img.title) {
             img.parentElement.dataset.title = img.title;
-        }
-
-        if (img.alt.includes(' $')) {
-            [alt, ...tokens] = img.alt.split(' $');
-            const attrs = tokens.reduce((acc, token) => {
-                [key, value] = token.split('=');
-                return Object.assign(acc, {[key]: value});
-            }, {});
-            img.alt = alt;
-
-            if (attrs.size) {
-                if (attrs.size.includes('x')) {
-                    [img.width, img.height] = attrs.size.split('x');
-                } else if(attrs.size.includes(':')) {
-                    [prop, value] = attrs.size.split(':');
-                    img[prop] = value;
-                } else {
-                    img.width = attrs.size;
-                }
-            }
         }
     }
     return doc.documentElement.outerHTML;

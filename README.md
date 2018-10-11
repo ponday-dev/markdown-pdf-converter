@@ -24,6 +24,10 @@ npm install
 
 ## 拡張機能
 
+### 読み込んでいるプラグイン
+
+- [画像のサイズ指定(markdown-it-imsize)](https://github.com/tatsy/markdown-it-imsize)
+
 ### 画像の自動読み込み
 
 画像要素は、config.jsonで指定されたimages_dirフォルダ内に配置された画像ファイルを自動的に読み込みます。
@@ -31,20 +35,6 @@ npm install
 ```md
 ![sample.png](sample.png)
 ```
-
-### 画像のサイズ指定
-
-画像のサイズを以下のフォーマットで指定できます。
-
-```md
-![sample.png $size=200x300](...)
-![sample.png $size=width:200](...)
-![sample.png $size=200](...)
-```
-
-+ `$size=(width)x(height)`でサイズ指定
-+ `$size=('width' or 'height'):(value)`でどちらか一方のみサイズ指定
-+ `$size=(width)`で幅指定
 
 ### 画像のキャプション設定
 
