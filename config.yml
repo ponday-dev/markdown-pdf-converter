@@ -1,0 +1,5 @@
+default:
+  port: 3000
+  image_path: "images"
+  book_config:
+    path: "book.yml"
