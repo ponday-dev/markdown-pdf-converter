@@ -29,9 +29,9 @@ function convertImageSrc(html, port) {
 }
 
 function convertPrintOptions({ print_options, templates }) {
-    const loadTemplate = (value, path) => {
+    const loadTemplate = (value, templatePath) => {
         if (value === true) {
-            return fs.readFileSync(path.join(templates.path, path), { encoding: 'utf-8' });
+            return fs.readFileSync(path.resolve(templates.path, templatePath), { encoding: 'utf-8' });
         } else {
             return value;
         }
