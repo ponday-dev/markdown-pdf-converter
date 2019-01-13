@@ -51,6 +51,7 @@ h6 {
 p {
     font-size: 14px;
     padding: 0 3mm;
+    line-height: 1.6;
 }
 p:not(.img-container)::before {
     content: '   ';
