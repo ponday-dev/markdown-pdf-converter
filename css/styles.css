@@ -7,16 +7,18 @@ h1, h2, h3 {
     position: relative;
 }
 h1 {
-    font-size: 48px;
-    margin: 35mm 0 50mm 5mm;
+    font-size: 36px;
+    margin: 5mm 0 20mm 0;
     page-break-before: always;
-    /* page-break-after: always; */
 }
 h2 {
     page-break-before: always;
-    font-size: 36px;
+    font-size: 24px;
     margin: 5mm 0 10mm 0;
     padding: 2mm 0 2mm 6mm;
+}
+h1 + h2 {
+    page-break-before: unset;
 }
 h2:before {
     content: '';
@@ -28,24 +30,26 @@ h2:before {
     top: 0;
     left: 0;
 }
-h3, h4, h5, h6 {
+h4, h5, h6 {
     padding: 0 0 0 3mm;
 }
 h3 {
-    font-size: 24px;
+    font-size: 18px;
     border-bottom: 1px solid #323232;
+    padding: 0 0 2mm 3mm;
+    margin: 10mm 0 5mm 0;
 }
 h4 {
-   font-size: 22px;
+   font-size: 18px;
 }
 h5 {
-    font-size: 20px;
+    font-size: 16px;
 }
 h6 {
-    font-size: 18px;
+    font-size: 14px;
 }
 p {
-    font-size: 18px;
+    font-size: 14px;
     padding: 0 3mm;
 }
 p:not(.img-container)::before {
@@ -98,4 +102,14 @@ img {
 hr {
     width: 50mm;
     margin: 10mm auto;
+}
+ul {
+    list-style: none;
+}
+li::before {
+    content: "-";
+    margin-right: 1rem;
+}
+li > ul {
+    padding-left: 25px;
 }
