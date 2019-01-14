@@ -13,6 +13,8 @@ MarkdownをHTML変換してPuppeteerでPDF化。
 npm install
 ```
 
+**バージョン指定しないとpdf化されないので、package-lock.jsonそのままで`npm`で動かす。**
+
 `config.json`を編集。
 
 - `template`: Markdown変換後のHTMLテンプレートファイルパス（Mustache形式）
