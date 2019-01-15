@@ -16,7 +16,7 @@ function loadAllArticles({ articles }) {
 }
 
 function createTableContents(md) {
-    const contents = md.match(/([#]{1,3}\s.+|[`]{3}.*)/g)
+    const contents = md.match(/([#]{1,3}\s.+|[`]{3}.*)/g) || [];
 
     const concatToken = (prefix, acc, token, breaks=1) => {
         const br = '\n'.repeat(breaks);
