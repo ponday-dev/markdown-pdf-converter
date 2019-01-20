@@ -1,3 +1,4 @@
+const fs = require('fs');
 const http = require('http');
 const mime = require('mime-types');
 const path = require('path');
