@@ -1,6 +1,7 @@
 const fs = require('fs');
 const http = require('http');
-const mime = require('mime-types');
+const mime = require('mime-types')
+const fs = require('fs');
 const path = require('path');
 
 module.exports = function createServer({ image_path }) {
