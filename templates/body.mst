@@ -8,6 +8,9 @@
 <style>{{{css}}}</style>
 </head>
 <body>
+<nav id="toc">
+    <h2>目次</h2>
+</nav>
 {{{body}}}
 </body>
 </html>

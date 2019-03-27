@@ -2,10 +2,13 @@ default:
   highlight: true
   styles:
     - "css/styles.css"
+    - "css/toc.css"
     - "node_modules/highlight.js/styles/atom-one-light.css"
+  page_style: "css/page.css"
   templates:
     path: "templates"
     body: "body.mst"
+    toc: "toc.mst"
   articles:
     path: "articles"
     files:

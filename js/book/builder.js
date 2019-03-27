@@ -5,6 +5,7 @@ const { JSDOM } = require('jsdom');
 
 const markdownParser = require('../markdown/parser');
 const loadFiles = require('../util/load-files');
+const generateToc = require('./toc');
 
 function loadMarkdowns({ articles }) {
     return loadFiles(articles.files.map(file => path.resolve(articles.path, file)), '\n\n');
@@ -44,6 +45,7 @@ module.exports = ({ book }) => {
     const { window } = new JSDOM(html);
 
     adjustBreakPage(window);
+    generateToc(window);
 
     return addPageStyle(window.document.documentElement.outerHTML, book);
 }

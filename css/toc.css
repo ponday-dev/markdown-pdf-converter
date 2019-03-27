@@ -1,0 +1,43 @@
+#toc ol {
+	list-style: none;
+	counter-reset: chap;
+	padding-left: 0em;
+	line-height: 1.45;
+    padding-left: 2em;
+}
+#toc li {
+    font-weight: bold;
+	break-inside: avoid;
+}
+#toc li.sub {
+    font-weight: normal;
+    margin-left: 2em;
+}
+
+#toc li:before {
+    content: "";
+}
+
+#toc li a {
+	display: inline-flex;
+	width: 100%;
+	text-decoration: none;
+	color: currentColor;
+	break-inside: avoid;
+	align-items: baseline;
+}
+#toc li a::before {
+	margin-left: 1px;
+	margin-right: 1px;
+	border-bottom: solid 1px lightgray;
+	content: "";
+	order: 1;
+	flex: auto;
+}
+#toc li a::after {
+	text-align: right;
+	content: target-counter(attr(href, url), page);	
+	align-self: flex-end;
+	flex: none;
+	order: 2;
+}
