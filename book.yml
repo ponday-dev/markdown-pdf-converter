@@ -3,28 +3,9 @@ default:
   styles:
     - "css/styles.css"
     - "node_modules/highlight.js/styles/atom-one-light.css"
-  print_options:
-    path: "dist/book.pdf"
-    format: "B5"
-    print_background: true
-    landspace: false
-    display_header_footer: false
-    header_template: true
-    footer_template: true
-    margin:
-      top: "10mm"
-      right: "5mm"
-      bottom: "10mm"
-      left: "5mm"
   templates:
     path: "templates"
-    front: "front.pdf"
-    back_of_front: "white.pdf"
-    header: "header.html"
     body: "body.mst"
-    footer: "footer.html"
-    back_of_back: "white.pdf"
-    back: "back.pdf"
   articles:
     path: "articles"
     files:
