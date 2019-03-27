@@ -1,2 +1,4 @@
 node_modules/
+public/
+!public/.gitignore
 .DS_Store

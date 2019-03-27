@@ -1,3 +1,7 @@
+:root {
+    font-size: 9pt;
+}
+
 h1, h2, h3, h4, h5, h6, p, li {
     font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', '游ゴシック  Medium', meiryo, sans-serif;
     color: #323232;
@@ -8,25 +12,24 @@ h1, h2, h3 {
 }
 h1 {
     font-size: 30px;
-    margin: 0mm 0 15mm 0;
+    margin: 3mm 0 10mm 0;
     page-break-before: always;
 }
 h2 {
-    page-break-before: always;
     font-size: 20px;
     margin: 5mm 0 10mm 0;
     padding: 1mm 0 1mm 6mm;
     border-bottom: 1px solid #323232;
 }
-h1 + h2 {
-    page-break-before: unset;
+h2:not(.first-header) {
+    page-break-before: always;
 }
 h2:before {
     content: '';
     display: inline-block;
     width: 3mm;
     height: 100%;
-    background-color: #323232;
+    background: #323232;
     position: absolute;
     top: 0;
     left: 0;

@@ -1,0 +1,8 @@
+@page {
+    size: JIS-B5;
+    margin: 3% 5% 5% 5%;
+    @bottom-right {
+        content: counter(page);
+        font-size: 9pt;
+    }
+}

@@ -9,12 +9,10 @@
   "license": "ISC",
   "dependencies": {
     "highlight.js": "^9.15.6",
-    "jsdom": "^12.2.0",
+    "jsdom": "^14.0.0",
     "markdown-it": "^8.4.2",
     "markdown-it-imsize": "^2.0.1",
-    "mime-types": "^2.1.22",
     "mustache": "^2.3.2",
-    "puppeteer": "^1.13.0",
     "textlint": "^11.2.3",
     "textlint-rule-max-ten": "^2.0.3",
     "textlint-rule-no-mix-dearu-desumasu": "^3.0.3",
@@ -25,6 +23,7 @@
   },
   "devDependencies": {
     "argparse": "^1.0.10",
+    "http-server": "^0.11.1",
     "js-yaml": "^3.13.0"
   },
   "keywords": [],
