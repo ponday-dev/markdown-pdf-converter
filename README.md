@@ -1,7 +1,7 @@
 # Markdown PDF Converter
 
 技術書典で使えれば良いなと思って作ってるヤツ。  
-MarkdownをHTML変換して~~PuppeteerでPDF化。  ~~Vivliostyleでレンダリング → Chromeの印刷機能を使ってPDF化
+MarkdownをHTML変換して~~PuppeteerでPDF化。  ~~ Vivliostyleでレンダリング → Chromeの印刷機能を使ってPDF化
 
 **ISSUE / PR 募集してます！**
 
