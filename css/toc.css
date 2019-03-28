@@ -8,6 +8,7 @@
 #toc li {
     font-weight: bold;
 	break-inside: avoid;
+    margin-right: 2rem;
 }
 #toc li.sub {
     font-weight: normal;
