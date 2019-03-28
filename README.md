@@ -1,7 +1,7 @@
 # Markdown PDF Converter
 
 技術書典で使えれば良いなと思って作ってるヤツ。  
-MarkdownをHTML変換してPuppeteerでPDF化。  
+MarkdownをHTML変換して~~PuppeteerでPDF化。  ~~Vivliostyleでレンダリング → Chromeの印刷機能を使ってPDF化
 
 **ISSUE / PR 募集してます！**
 
@@ -20,7 +20,10 @@ npm install
 - `styles`: 適用するCSSファイルパスのリスト（highlight.jsのstyleも指定して下さい）
 - `dist`: 出力ファイルパス
 
-`npm run start`でPDF変換開始。
+~~`npm run start`でPDF変換開始。~~
+`make render`でVivliostyle Viewerが開きます。ブラウザの印刷機能を使ってPDF化してください。
+
+※ Chromeの場合、印刷オプションの「背景のグラフィック」が有効になっていないと一部のレイアウトが崩れる場合があります。
 
 ## 拡張機能
 
