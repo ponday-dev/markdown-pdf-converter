@@ -8,23 +8,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "highlight.js": "^9.15.6",
-    "jsdom": "^14.0.0",
-    "markdown-it": "^8.4.2",
+    "highlight.js": "^9.15.8",
+    "jsdom": "^15.1.1",
+    "markdown-it": "^9.0.0",
     "markdown-it-imsize": "^2.0.1",
-    "mustache": "^2.3.2",
-    "textlint": "^11.2.3",
+    "mustache": "^3.0.1",
+    "textlint": "^11.2.6",
     "textlint-rule-max-ten": "^2.0.3",
-    "textlint-rule-no-mix-dearu-desumasu": "^3.0.3",
+    "textlint-rule-no-mix-dearu-desumasu": "^4.0.0",
     "textlint-rule-preset-icsmedia": "github:ics-creative/textlint-rule-preset-icsmedia",
-    "textlint-rule-preset-japanese": "^4.0.2",
+    "textlint-rule-preset-japanese": "^4.0.3",
     "textlint-rule-preset-jtf-style": "^2.3.3",
-    "textlint-rule-prh": "^5.2.0"
+    "textlint-rule-prh": "^5.2.1"
   },
   "devDependencies": {
     "argparse": "^1.0.10",
     "http-server": "^0.11.1",
-    "js-yaml": "^3.13.0"
+    "js-yaml": "^3.13.1"
   },
   "keywords": [],
   "description": ""
