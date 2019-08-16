@@ -38,6 +38,6 @@ function isSpace(code) {
 module.exports = function break_page_plugin(md) {
     md.block.ruler.before('paragraph', 'break_page', break_page);
     md.renderer.rules.break_page = function (tokens, idx, options, env, self) {
-        return  '<p style="page-break-after: always;"></p>';
+        return  '<p style="break-after: page;"></p>';
     };
 }
