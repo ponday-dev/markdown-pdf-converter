@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "highlight.js": "^9.15.8",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "markdown-it": "^9.0.1",
     "markdown-it-imsize": "^2.0.1",
     "mustache": "^3.0.1",
